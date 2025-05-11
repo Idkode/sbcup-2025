@@ -1,0 +1,12 @@
+{
+    "firefox": {
+      "default": "latest",
+      "versions": {
+        "latest": {
+          "image": "custom-firefox:latest",
+          "port": "4444",
+          "path": "/wd/hub"
+        }
+      }
+    }
+  }

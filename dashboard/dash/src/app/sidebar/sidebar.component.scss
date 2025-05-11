@@ -1,0 +1,47 @@
+.sidebar {
+    background-color: var(--sidebar-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 2.5vh;
+  }
+
+  #home {
+    color: #000;
+  }
+  
+  .nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #333;
+    width: 100%;
+    height: 4vw;
+  }
+  
+  .nav-item:hover {
+    background-color: #D2A8E2;
+    cursor: pointer;
+  }
+  
+  .icon {
+    font-size: 24px;
+    height: 50%;
+    width: 50%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  }
+
+.img {
+    justify-self: center;
+    height: 100%;
+    width: 100%;
+}
+
+.selected {
+background-color: var(--selected-color);
+}

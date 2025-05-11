@@ -1,0 +1,11 @@
+<div class="container">
+    <app-sidebar></app-sidebar>
+    <div class="main-content">
+        <div class="config">
+            <label id="multipleLabel" for="multiple">Intervalo entre as medições:</label>
+            <select id="multiple" [(ngModel)]="multiple" (ngModelChange)="updateMultiple()">
+                <option *ngFor="let option of options" [value]="option">{{ option }}</option>
+              </select>
+        </div>
+    </div>
+</div>

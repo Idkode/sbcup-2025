@@ -1,0 +1,14 @@
+{ 
+    "cameras_file_path":"/app/cameras.json",
+    "storage_path":"/app/cameras/",
+    "photo_interval":300,
+    "camera_interval":20,
+    "max_run_time":2160000,
+    "selenoid":"http://localhost:4444/wd/hub",
+    "image_format":".png",
+    "job_type":"parallel",
+    "multiple":5,
+    "cameras":[
+        "Manaus-2"
+    ]
+}

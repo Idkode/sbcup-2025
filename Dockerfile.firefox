@@ -1,0 +1,24 @@
+FROM selenoid/firefox:latest
+
+USER root
+RUN apt-get update && apt-get install -y wget --no-install-recommends && rm -rf /var/lib/apt/lists/*
+
+COPY ./browsers.json /config/browsers.json
+
+ARG FIREFOX_EXTENSION_URL="https://github.com/gorhill/uBlock/releases/download/1.63.2/uBlock0_1.63.2.firefox.signed.xpi"
+
+RUN wget -O /tmp/uBlock0@raymondhill.net.xpi "$FIREFOX_EXTENSION_URL"
+
+
+RUN mkdir -p /home/selenium/.mozilla/firefox/profile/extensions
+RUN cp /tmp/uBlock0@raymondhill.net.xpi /usr/lib/firefox/browser/extensions/uBlock0@raymondhill.net.xpi
+RUN chown -R selenium /usr/lib/firefox && rm /tmp/uBlock0@raymondhill.net.xpi
+RUN mkdir -p /video && chmod 777 /video
+
+USER selenium
+
+EXPOSE 4444
+
+LABEL image="custom-firefox"
+
+ENTRYPOINT ["/entrypoint.sh"]

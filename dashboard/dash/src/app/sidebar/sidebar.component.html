@@ -1,0 +1,27 @@
+<div class="sidebar">
+    <a routerLink="/inicio" class="nav-item" [ngClass]="{ 'selected': currentScreen === '/inicio'}" title="Tela Inicial"
+    (click)="navigateTo('/inicio')">
+      <div class="icon" id="home">
+        <img src="assets/images/home.svg" alt="" class="img">
+      </div>
+    </a>
+    <a routerLink="/cidades" class="nav-item" [ngClass]="{ 'selected': currentScreen === '/cidades'}" title="Cidades"
+    (click)="navigateTo('/cidades')">
+      <div class="icon">
+        <img src="assets/images/city.svg" alt="" class="img">
+      </div>
+    </a>
+    <a routerLink="/dashboard" class="nav-item" [ngClass]="{ 'selected': currentScreen === '/dashboard' ||
+                                                                         currentScreen === '/'}" title="Dashboard"
+    (click)="navigateTo('/dashboard')">
+      <div class="icon">
+        <img src="assets/images/monitoring.svg" alt="" class="img">
+      </div>
+    </a>
+    <a routerLink="/configuracoes" class="nav-item" [ngClass]="{ 'selected': currentScreen === '/configuracoes'}" title="Configurações"
+    (click)="navigateTo('/configuracoes')">
+      <div class="icon">
+        <img src="assets/images/settings.svg" alt="" class="img">
+      </div>
+    </a>
+  </div>

@@ -1,0 +1,279 @@
+.content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+  
+.data-info {
+    justify-content: space-between;
+    gap: 1%;
+    display: flex;
+    flex-direction: row;
+    height: 15%;
+}
+  
+.data-item {
+    box-sizing: border-box;
+    padding: 1% 2% 1% 1.5%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 8.6%;
+    border-radius: 10px;
+    background-color: #fff;
+    width: 30%;
+    height: 100%;
+    min-height: 60px;
+}
+
+.data-item .data-value{
+    width: 100%;
+    height: 28%;
+    font-size: 16px;
+    font-weight: bolder;
+    overflow-wrap: break-word;
+}
+
+.data-value {
+    padding-left: 5px;
+    height: 33%;
+}
+
+.data-label {
+    padding-left: 5px;
+    font-size: 11.4px;
+}
+
+.aviso {
+    width: 40%;
+}
+  
+.img-container {
+    padding-left: 1%;
+    display: flex;
+    flex-direction: row;
+    height: 28%;
+}
+
+.camera-details {
+    padding-top: 15px;
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.monitoring {
+    display: flex;
+    gap: 10px;
+    width: 70%;
+    height: 100%;
+    flex-direction: column;
+
+}
+
+#situacao {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.details {
+    display: flex;
+    width: 40%;
+    height: 100%;
+    flex-direction: column;
+    gap: 3%;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+.details h2 {
+    font-weight: 200;
+    padding-left: 20px;
+    width: 100%;         
+    min-height: 5px;
+    font-size: 11.4px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ;
+}
+
+.traffic-chart{
+    border-radius: 10px;
+    height: 80%;
+    width: 100%;
+    background-color: #fff;
+}
+
+app-line-chart{
+    height: 60%;
+    width: 80%;
+    padding-left: 20px;
+    box-sizing: content-box;
+}
+  
+.traffic-peak,
+.road-status {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 1vh 2vw 1.2vh 1.5vw;
+    text-align: left;
+    gap: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    width: 45%;
+    max-height: 100px;
+    min-height: 80px;
+}
+
+  .status-value, .peak-value {
+    font-size: 14px;
+    font-weight: bolder;
+    overflow-wrap: break-word;
+  }
+
+  .status-label, .peak-label {
+    font-size: 11.4px;
+  }
+
+#situacao .img-container{
+    padding-left: 0;
+}
+
+.traffic-realtime {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    height: 50%;
+    min-height: 250px;
+}
+
+.traffic-realtime-title {
+    width: 100%;
+}
+
+.traffic-realtime-title h2{
+    text-align: left;
+    margin: 0;
+    padding-top: 10px;
+    font-weight: 400;
+    width: 100%;
+}
+
+.traffic-realtime img {
+    display: flex;
+    width: 90%;
+    height: 93%;
+    padding: 10px;
+}
+
+.traffic-details {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #fff;
+    gap: 10px;
+    border-radius: 10px;
+    height: 48%;
+    // max-height: 200px;
+}
+
+.traffic-chart-pie {
+    // position: relative;
+    // display: inline-block;
+    padding: 5px;
+    padding-left: 15px;
+}
+  
+.vehicle-count {
+    font-size: 17px;
+    font-weight: bolder;
+    padding-bottom: 23px;
+}
+
+
+.aviso img{
+    display: flex;
+    align-self: left;
+}
+
+#img-aviso{
+    padding-left: 4px;
+}
+
+.chart-title {
+    margin-left: 20px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ddd;
+    width: 30%;
+}
+
+.chart-title h2{
+    font-size: 9.4px;
+    font-weight: 300;
+}
+
+.pizza {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 90%;
+    width: 90%;
+    gap: 10px;
+}
+
+.traffic-details-title h2 {
+    text-align: left;
+    font-size: 9.4px;
+    font-weight: 400;
+}
+
+.chart-pie {
+    // padding-top: 20px;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.vehicle-legend {
+    display: flex;
+    flex-direction: row;
+    font-size: 12.4px;
+    gap: 10px;
+    align-items: center;
+}
+
+.vehicle-types{
+    padding-top: 8%;
+    width: 30%;
+    align-items: start;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.square{
+    width: 12px;
+    height: 12px;
+}
+
+.car {
+    background-color: #594da3;
+}
+
+.moto {
+    background-color: #ad88f1;
+}
+
+.bus {
+    background-color: #ceb5fd;
+}
+
+.outros {
+    background-color: #d8caf4;
+}
+

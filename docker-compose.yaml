@@ -1,0 +1,129 @@
+services:
+  backend:
+    container_name: monitoring-backend
+    build: ./backend
+    image: monitoring-backend
+    ports:
+      - "8081:8080"
+    networks:
+      - monitoring
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://user:password@mongodb:27017/monitoring
+      IMAGES_DIRECTORY: /app/uploads
+      MODEL_URL: http://model:8000/detect
+    volumes:
+      - images:/app/uploads
+    depends_on:
+      - mongodb
+      - model
+    restart: unless-stopped
+
+  mongodb:
+    container_name: monitoring-mongo
+    image: mvertes/alpine-mongo:4.0.6-1
+    ports:
+      - "127.0.0.1:27017:27017"
+    networks:
+      - monitoring
+    volumes:
+      - mongodb:/data/db
+      - ./mongo-init.sh:/init.sh:ro
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: Idkode
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: monitoring
+      MONGO_BACKEND_USERNAME: user
+      MONGO_BACKEND_PASSWORD: password
+    entrypoint: ["/init.sh"]
+    restart: unless-stopped
+
+  python:
+    container_name: monitoring-python
+    build: ./monitoring
+    image: monitoring-python
+    networks:
+      - monitoring
+    stdin_open: true
+    tty: true
+    environment:
+        SERVER_URL: http://backend:8080/api
+        SERVER_IMAGE_ENDPOINT: /image/upload
+        SELENOID_URL: http://selenoid:4444/wd/hub
+    depends_on:
+      - backend
+      - selenoid
+    restart: unless-stopped
+
+  selenoid:
+    container_name: monitoring-selenoid
+    image: aerokube/selenoid:latest
+    ports:
+      - "4444:4444"
+    volumes:
+      - ./browsers.json:/etc/selenoid/browsers.json:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - SELENOID_LOG_LEVEL=debug
+    networks:
+      monitoring: null
+    command: ["-container-network", "monitoring", "-capture-driver-logs"]
+    restart: unless-stopped
+
+  selenoid-ui:
+    container_name: monitoring-selenoid-ui
+    image: aerokube/selenoid-ui:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - monitoring
+    depends_on:
+      - selenoid
+    command: ["--selenoid-uri", "http://selenoid:4444"]
+
+  model:
+    container_name: monitoring-model
+    build: ./modelo
+    image: monitoring-model
+    ports:
+      - "8000:8000"
+    networks:
+      - monitoring
+    environment:
+      UVICORN_HOST: 127.0.0.1
+      UVICORN_PORT: 8000
+      MODEL: /app/models/best.pt
+    restart: unless-stopped
+  
+  custom-browser: # Added to ensure firefox image will be built
+    container_name: custom-firefox
+    build:
+      context: .
+      dockerfile: Dockerfile.firefox
+    image: custom-firefox:latest
+    networks:
+      - monitoring
+    deploy:
+      replicas: 0
+
+  dashboard:
+    container_name: monitoring-dashboard
+    build: ./dashboard/dash
+    image: monitoring-dashboard
+    ports:
+      - "81:80"
+    networks:
+      - monitoring
+    depends_on:
+      - backend
+
+
+volumes:
+  images:
+    driver: local
+  mongodb:
+    driver: local
+
+networks:
+  monitoring:
+    name: monitoring
+    driver: bridge

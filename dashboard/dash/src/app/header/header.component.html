@@ -1,0 +1,30 @@
+<div class="header">
+    <div class="header-content">
+      <div class="header-icon">
+        <img src="assets/images/traffic.svg" alt="" class="img">
+      </div>
+      <h1>Monitoramento de Tráfego em Manaus (AM)</h1>
+    </div>
+  
+    <div class="header-controls">
+      <div class="camera-selection">
+        <label for="camera-select">Selecione câmera:</label>
+        <button
+          *ngFor="let camera of cameras"
+          class="camera-button"
+          [class.selected]="selectedCamera === camera"
+          (click)="selectCamera(camera)">
+          {{ camera | titlecase }}
+        </button>
+      </div>
+  
+      <div class="search-filter">
+        <img src="assets/images/search.svg" alt="" class="img">
+        <input type="text" id="search-input" placeholder="Busca">
+        <div class="filter">
+            <img src="/assets/images/filter.svg" class="filtersvg">
+            <div id="filter-div">Filtrar</div>
+        </div>
+      </div>
+    </div>
+  </div>

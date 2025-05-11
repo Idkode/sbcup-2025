@@ -1,0 +1,92 @@
+<div class="content">
+    <div class="data-info">
+      <div class="data-item">
+        <div class="img-container">
+            <img src="assets/images/day.svg" alt="Calendário">
+        </div>
+        <div class="data-label">Data</div>
+        <div class="data-value">{{date}}</div>
+      </div>
+      <div class="data-item">
+        <div class="img-container">
+            <img src="assets/images/time.svg" alt="Relógio">
+        </div>
+        <div class="data-label">Horário Atual</div>
+        <div class="data-value">{{time}}</div>
+      </div>
+      <div class="data-item aviso">
+        <div class="img-container" id="img-aviso">
+            <img src="assets/images/warning.svg" alt="Aviso">
+        </div>
+        <div class="data-label">Restrições da via</div>
+        <div class="data-value">Proibição de veículos pesados</div>
+      </div>
+    </div>
+
+    <div class="camera-details">
+    <div class="monitoring">
+            <div class="traffic-chart">
+                <div class="chart-title">
+                  <h2>Monitoramento ao longo do dia</h2>
+                </div>
+                <app-line-chart [data]="lineChartData" (trigger)="loadCurrentImage()"></app-line-chart>
+            </div>
+            <div id="situacao">
+                <div class="traffic-peak">
+                  <div class="img-container">
+                    <img src="assets/images/car.svg" alt="Relógio">
+                  </div>
+                    <div class="peak-label">Pico de tráfego no dia</div>
+                    <div class="peak-value">{{peak}} veículos</div>
+                </div>
+          
+                <div class="road-status">
+                  <div class="img-container">
+                    <img src="assets/images/happy.svg" alt="Relógio">
+                  </div>
+                    <div class="status-label">Situação da via</div>
+                    <div class="status-value">Tráfego Leve</div>
+                </div>
+            </div>
+    </div>
+  
+    <div class="details">
+        <div class="traffic-realtime">
+            <div class="traffic-realtime-title">
+              <h2>Visualização em tempo real</h2>
+            </div>
+            <img [src]="base64" alt="Vídeo em tempo real do tráfego">
+        </div>
+        <div class="traffic-details">
+          <div class="traffic-details-title">
+            <h2>Caracterização do Tráfego</h2>
+          </div>
+          <div class="pizza">
+            <div class="traffic-chart-pie">
+              <app-donut [currentData]="donutChartData" class="chart-pie"></app-donut>
+            </div>
+            <div class="vehicle-types">
+              <div class="vehicle-count">{{totalVehicles}} veículos</div>
+              <div class="vehicle-legend">
+                <div class="square car"></div>
+                <div class="vehicle-type">Carros</div>
+              </div>
+              <div class="vehicle-legend">
+                <div class="square bus"></div>
+                <div class="vehicle-type">Ônibus</div>
+              </div>
+              <div class="vehicle-legend">
+                <div class="square moto"></div>
+                <div class="vehicle-type">Motos</div>
+              </div>
+              <div class="vehicle-legend">
+                <div class="square outros"></div>
+                <div class="vehicle-type">Outros</div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    </div>
+
+  </div>

@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+:root {
+    --sidebar-color: #948ad3;
+    --selected-color: #7F61C0;
+    --accent-color: #28a745;
+    --background-color: #f8f9fa;
+    --text-color: #333;
+}
+  
+body, html {
+margin: 0;
+padding: 0;
+height: 100vh;
+font-family: 'DM Sans';
+}
+
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+app-sidebar{
+    width: 4%;
+}
+
+.main-content{
+    width: 96%;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+app-content {
+    flex: 1;
+    padding: 25px;
+    padding-bottom: 0;
+    background-color: #eee;
+}
