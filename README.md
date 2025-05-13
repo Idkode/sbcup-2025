@@ -13,9 +13,16 @@ If you use this code in your research, please cite the following paper:
 
 > [**Monitoramento Inteligente de Tempo Real para Tráfego Urbano em Cidades Brasileiras**]()
 
+## Dataset
+
+The YOLO model was trained with data from:
+
+> [**Brazilian Urban Mobility Image Dataset**](http://doi.org/10.17632/m45vcmndvc.1)
+
+
 ## Overview
 
-> This project demonstrates a multi-service application leveraging Docker Compose. It features an Angular frontend for user interaction, a Spring Boot backend for API services, a Python monitoring service that uses selenoid for data collection, and a YOLO model service for vehicle detection in the obtained images. 
+>This project implements a multi-service architecture orchestrated by Docker Compose. It features an Angular frontend for user interaction, a Spring Boot backend for API services, a Python monitoring service that uses selenoid for data collection, and a YOLO model service for vehicle detection in the obtained images. 
 
 ## Table of Contents
 
@@ -54,7 +61,7 @@ To run this project, you need to install Docker (and Docker Compose) on your mac
     - Java Development Kit (JDK) 17
     - Python and pip (for YOLO and monitoring services).
 
-All python development was made using conda 25.1.1
+All Python development was made using conda 25.1.1
 
 ## Getting Started
 
@@ -116,27 +123,27 @@ Now, here is a brief explanation about each of the services.
 - This is the interface between the user and the cameras monitoring.
 - As of now, only a dashboard page and a simple settings page are available.
 - Depends on backend, model and monitoring services.
-- Needs images collected from at least one camera to actually work.
+- Needs images collected from at least one camera to work.
 
 ### Spring Boot Backend
 
-- Responsible for saving the images from the monitoring service, sending images to the model to get Detections and supplying data to frontend.
-- Uses Spring Boot. Interacts with mongo database to save the images' data and detections.
+- Responsible for saving the images from the monitoring service, sending images to the model to get detections and supplying data to frontend.
+- Uses Spring Boot. Interacts with Mongo database to save the images' data and detections.
 - As of now, only Image endpoints are available. They can be checked at the ImageController class.
 
 ### Monitoring Service
 
-- Configuration files are config.json and cameras.json.
+- Configuration files can be found at config.json and cameras.json.
 - For monitoring purposes, jobType needs to be parallel.
 - With the current configurations, the limit of cameras is 5. To increase the number, the limit would need to be altered in the selenoid service.
-- Before running, it is recommended to check if the camera links are still valid, since most of them are changed periodically
+- Before running, it is recommended to check if the camera links are still valid, since most of them changed periodically
 
 ### Selenoid Service
 
 - Manages selenium sessions created by the monitoring service.
 - Has a limit of 5 concurrent sessions, but can be altered through compose configurations.
 - Beware that increasing the limit might increase CPU and memory usage
-- Uses a custom firefox image to ensure correct images collection in some websites.
+- Uses a custom Firefox image to ensure correct images collection in some websites.
 
 ### YOLO Model Service
 
@@ -151,7 +158,7 @@ This project is dedicated to the public domain under the Creative Commons Zero v
 
 ### Contact
 
-For inquiries or additional information, please contact us via email: [Carlos Loureiro](mailto:cenlf.eng22@uea.edu.br) and [Elloá B. Guedes](ebgcosta@uea.edu.br).
+For inquiries or additional information, please contact us via email: [Carlos Loureiro](mailto:cenlf.eng22@uea.edu.br), [Carlos Mauricio S. Figueiredo](cfigueiredo@uea.edu.br) and [Elloá B. Guedes](ebgcosta@uea.edu.br).
 
 ### Acknowledgements
 
@@ -161,6 +168,7 @@ The authors would like to express their gratitude for the financial support prov
 
 - Carlos Loureiro: [@Idkode](https://github.com/Idkode)
 - Elloá B. Guedes: [@elloa](https://github.com/elloa)
+- Carlos Mauricio S. Figueiredo: [LinkedIn](https://www.linkedin.com/in/cmsfigueiredo/)
 
 
 [Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
